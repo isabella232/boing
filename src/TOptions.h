@@ -1,5 +1,5 @@
-#ifndef GENUS_TOPTIONS_H
-#define GENUS_TOPTIONS_H
+#ifndef BOING_TOPTIONS_H
+#define BOING_TOPTIONS_H
 
 #include "BTypes.h"
 #include "BStore.h"

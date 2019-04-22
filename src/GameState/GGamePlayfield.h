@@ -1,5 +1,5 @@
-#ifndef GENUS_GGAMEPLAYFIELD_H
-#define GENUS_GGAMEPLAYFIELD_H
+#ifndef BOING_GGAMEPLAYFIELD_H
+#define BOING_GGAMEPLAYFIELD_H
 
 #include "Game.h"
 
@@ -16,4 +16,4 @@ public:
 };
 
 
-#endif //GENUS_GGAMEPLAYFIELD_H
+#endif //BOING_GGAMEPLAYFIELD_H

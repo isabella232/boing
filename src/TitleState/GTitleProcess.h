@@ -1,5 +1,5 @@
-#ifndef GENUS_GTITLEPROCESS_H
-#define GENUS_GTITLEPROCESS_H
+#ifndef BOING_GTITLEPROCESS_H
+#define BOING_GTITLEPROCESS_H
 
 #include "Game.h"
 
@@ -26,4 +26,4 @@ protected:
   const char *mCurrentText;
 };
 
-#endif //GENUS_GTITLEPROCESS_H
+#endif //BOING_GTITLEPROCESS_H

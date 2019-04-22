@@ -1,5 +1,5 @@
-#ifndef GENUS_GCOMPUTERPROCESS_H
-#define GENUS_GCOMPUTERPROCESS_H
+#ifndef BOING_GCOMPUTERPROCESS_H
+#define BOING_GCOMPUTERPROCESS_H
 
 #include "Game.h"
 class GGameState;
@@ -18,4 +18,4 @@ protected:
   GGameState *mGameState;
 };
 
-#endif //GENUS_GCOMPUTERPROCESS_H
+#endif //BOING_GCOMPUTERPROCESS_H

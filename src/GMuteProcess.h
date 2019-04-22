@@ -1,5 +1,5 @@
-#ifndef GENUS_GMUTEPROCESS_H
-#define GENUS_GMUTEPROCESS_H
+#ifndef BOING_GMUTEPROCESS_H
+#define BOING_GMUTEPROCESS_H
 
 #include "GGame.h"
 
@@ -36,4 +36,4 @@ class GMuteProcess : public BProcess {
     TBool mMuted;
 };
 
-#endif //GENUS_GMUTEPROCESS_H
+#endif //BOING_GMUTEPROCESS_H

@@ -1,5 +1,5 @@
-#ifndef GENUS_GGAMESTATE_H
-#define GENUS_GGAMESTATE_H
+#ifndef BOING_GGAMESTATE_H
+#define BOING_GGAMESTATE_H
 
 #include "Game.h"
 
@@ -37,4 +37,4 @@ public:
   GBallProcess *mBallProcess;
 };
 
-#endif //GENUS_GGAMESTATE_H
+#endif //BOING_GGAMESTATE_H

@@ -1,5 +1,5 @@
-#ifndef GENUS_GDIMSCREENPROCESS_H
-#define GENUS_GDIMSCREENPROCESS_H
+#ifndef BOING_GDIMSCREENPROCESS_H
+#define BOING_GDIMSCREENPROCESS_H
 
 #include "GGame.h"
 
@@ -43,4 +43,4 @@ class GDimScreenProcess : public BProcess {
     TInt16 mTimer;
 };
 
-#endif //GENUS_GDIMSCREENPROCESS_H
+#endif //BOING_GDIMSCREENPROCESS_H

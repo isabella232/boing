@@ -1,5 +1,5 @@
-#ifndef GENUS_GRESOURCES_H
-#define GENUS_GRESOURCES_H
+#ifndef BOING_GRESOURCES_H
+#define BOING_GRESOURCES_H
 
 #include <BTypes.h>
 #include "Resources.h"
@@ -59,4 +59,4 @@ static const TUint16 IMG_BRICK_BLUE = 3;
 static const TUint16 IMG_BRICK_YELLOW = 4;
 static const TUint16 IMG_BALL = 8;
 
-#endif //GENUS_GRESOURCES_H
+#endif //BOING_GRESOURCES_H

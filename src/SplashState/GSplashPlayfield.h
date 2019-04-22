@@ -1,5 +1,5 @@
-#ifndef GENUS_GSPLASHPLAYFIELD_H
-#define GENUS_GSPLASHPLAYFIELD_H
+#ifndef BOING_GSPLASHPLAYFIELD_H
+#define BOING_GSPLASHPLAYFIELD_H
 
 #include "Game.h"
 
@@ -15,4 +15,4 @@ public:
   BBitmap *mBackground;
 };
 
-#endif //GENUS_GSPLASHPLAYFIELD_H
+#endif //BOING_GSPLASHPLAYFIELD_H

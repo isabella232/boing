@@ -1,5 +1,5 @@
-#ifndef GENUS_GSPLASHPROCESS_H
-#define GENUS_GSPLASHPROCESS_H
+#ifndef BOING_GSPLASHPROCESS_H
+#define BOING_GSPLASHPROCESS_H
 
 #include "Game.h"
 
@@ -13,4 +13,4 @@ public:
   TBool RunAfter();
 };
 
-#endif //GENUS_GSPLASHPROCESS_H
+#endif //BOING_GSPLASHPROCESS_H

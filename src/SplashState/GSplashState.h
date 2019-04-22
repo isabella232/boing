@@ -1,5 +1,5 @@
-#ifndef GENUS_GSPLASH_H
-#define GENUS_GSPLASH_H
+#ifndef BOING_GSPLASH_H
+#define BOING_GSPLASH_H
 
 #include <BPlayfield.h>
 
@@ -11,4 +11,4 @@ public:
 };
 
 
-#endif //GENUS_GSPLASH_H
+#endif //BOING_GSPLASH_H

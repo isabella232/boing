@@ -1,5 +1,5 @@
-#ifndef GENUS_GPADDLEPROCESS_H
-#define GENUS_GPADDLEPROCESS_H
+#ifndef BOING_GPADDLEPROCESS_H
+#define BOING_GPADDLEPROCESS_H
 
 #include "Game.h"
 class GGameState;
@@ -18,4 +18,4 @@ protected:
   GGameState *mGameState;
 };
 
-#endif //GENUS_GPADDLEPROCESS_H
+#endif //BOING_GPADDLEPROCESS_H

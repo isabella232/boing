@@ -1,5 +1,5 @@
-#ifndef GENUS_GBALLPROCESS_H
-#define GENUS_GBALLPROCESS_H
+#ifndef BOING_GBALLPROCESS_H
+#define BOING_GBALLPROCESS_H
 
 #include "Game.h"
 
@@ -32,4 +32,4 @@ private:
   GGameState *mGameState;
 };
 
-#endif //GENUS_GBALLPROCESS_H
+#endif //BOING_GBALLPROCESS_H

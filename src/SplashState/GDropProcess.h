@@ -1,5 +1,5 @@
-#ifndef GENUS_GDROPPROCESS_H
-#define GENUS_GDROPPROCESS_H
+#ifndef BOING_GDROPPROCESS_H
+#define BOING_GDROPPROCESS_H
 
 #include "Game.h"
 
@@ -29,4 +29,4 @@ protected:
   } mState;
 };
 
-#endif //GENUS_GDROPPROCESS_H
+#endif //BOING_GDROPPROCESS_H
