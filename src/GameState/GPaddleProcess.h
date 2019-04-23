@@ -8,14 +8,26 @@ class GPaddleProcess : public BProcess {
 public:
   GPaddleProcess(GGameState *aGameState);
   ~GPaddleProcess();
-public:
-  void Reset();
-public:
+
   TBool RunBefore();
   TBool RunAfter();
-  BSprite *mSprite;
-protected:
+  BSprite *Sprite() {
+    return mSprite;
+  }
+  void Pause(TBool aPause);
+  void Reset();
+
+private:
+  TBool WaitState();
+  TBool MoveState();
+
+private:
+  BSprite    *mSprite;
   GGameState *mGameState;
+  enum {
+    WAIT_STATE,
+    MOVE_STATE,
+  } mState;
 };
 
 #endif //BOING_GPADDLEPROCESS_H

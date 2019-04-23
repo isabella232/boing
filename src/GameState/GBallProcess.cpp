@@ -5,9 +5,11 @@
 
 class BallSprite : public BSprite {
 public:
-  BallSprite(TInt aPri, TUint16 bm, TUint16 img = 0,
-                             TUint32 aType = STYPE_DEFAULT) : BSprite(aPri, bm, img, aType){
+  BallSprite(TInt aPri, TUint16 bm, TUint16 img = 0, TUint32 aType = STYPE_DEFAULT) : BSprite(aPri, bm, img, aType) {
+    vx = 0;
+    vy = 0;
   }
+
   void Collide(BSprite *aOther) {
     if (aOther->type == STYPE_PLAYER) {
       if (x < (aOther->x + aOther->w) - vx ) {
@@ -29,22 +31,22 @@ public:
 };
 
 GBallProcess::GBallProcess(GGameState *aGameState, TFloat aVelocity) {
-  this->mGameState = aGameState;
-  this->mVelocity = aVelocity;
+  mGameState = aGameState;
+  mVelocity = aVelocity;
+  mState = WAIT_STATE;
   mSprite = new BallSprite(0, COMMON_SLOT, IMG_BALL, STYPE_PBULLET|STYPE_EBULLET);
   mSprite->cMask = STYPE_ENEMY | STYPE_PLAYER;
-  mSprite->flags |= SFLAG_RENDER | SFLAG_CHECK;
+  mSprite->flags |= SFLAG_CHECK;
+  mSprite->flags &= ~SFLAG_RENDER;
   mSprite->w = mSprite->h = 4;
   aGameState->AddSprite(mSprite);
 
   // Randomize direction
   if (Random(0, 1)) {
-    this->mAngle = RIGHT_ANGLE;
+    mAngle = RIGHT_ANGLE;
   } else {
-    this->mAngle = LEFT_ANGLE;
+    mAngle = LEFT_ANGLE;
   }
-
-  Reset(this->mVelocity);
 }
 
 GBallProcess::~GBallProcess() {
@@ -54,6 +56,9 @@ GBallProcess::~GBallProcess() {
 
 // velocity determines difficulty (speed of ball)
 void GBallProcess::Reset(TFloat aVelocity) {
+  mState = MOVE_STATE;
+  mSprite->flags |= SFLAG_RENDER;
+
   mSprite->x = TFloat(SCREEN_WIDTH) / 2;
   mSprite->y = TFloat(SCREEN_HEIGHT) / 2;
 
@@ -94,15 +99,21 @@ void GBallProcess::CheckCollision(BSprite *paddleSprite) {
 }
 
 TBool GBallProcess::RunBefore() {
+  if (mState == WAIT_STATE) {
+    return ETrue ;
+  }
+
   const TFloat newX = mSprite->x + mSprite->vx,
                newY = mSprite->y + mSprite->vy;
 
+  // Step through possible collision at high velocities
   if (newX <= 8) {
     CheckCollision(mGameState->Player());
   } else if (newX >= SCREEN_WIDTH - 16) {
     CheckCollision(mGameState->Computer());
   }
 
+  // Bounce of walls
   if (newY < 0) {
     SpeedUp();
     mSprite->y = 0;
@@ -122,7 +133,22 @@ TBool GBallProcess::RunBefore() {
   return ETrue;
 }
 
-TBool GBallProcess::RunAfter() {
+void GBallProcess::Pause(TBool aPause) {
+  if (aPause) {
+    mSprite->flags &= ~(SFLAG_RENDER | SFLAG_MOVE);
+    mState = WAIT_STATE;
+  } else {
+    mSprite->flags |= SFLAG_RENDER | SFLAG_MOVE;
+    mState = MOVE_STATE;
+  }
+}
+
+TBool GBallProcess::WaitState() {
+  return ETrue;
+}
+
+TBool GBallProcess::MoveState() {
+  // Change X velocity on paddle collision
   if (mSprite->cType & STYPE_PLAYER) {
     SpeedUp();
     mSprite->vx = MAX(-MAX_VELOCITY, MIN(MAX_VELOCITY, -mSprite->vx));
@@ -130,8 +156,7 @@ TBool GBallProcess::RunAfter() {
 #ifdef ENABLE_AUDIO
     gSoundPlayer.SfxBounceOffPlayer();
 #endif
-  }
-  else if (mSprite->cType & STYPE_ENEMY) {
+  } else if (mSprite->cType & STYPE_ENEMY) {
     SpeedUp();
     mSprite->vx = MAX(-MAX_VELOCITY, MIN(MAX_VELOCITY, -mSprite->vx));
     mSprite->cType &= ~STYPE_ENEMY;
@@ -139,19 +164,28 @@ TBool GBallProcess::RunAfter() {
     gSoundPlayer.SfxBounceOffPlayer();
 #endif
   }
+
+  // Increment score and reset ball
   if (mSprite->x > SCREEN_WIDTH) {
-    mGameState->PlayerScores();
+    mState = WAIT_STATE;
     mAngle = LEFT_ANGLE;
-    Reset(VELOCITY);
+    mGameState->PlayerScores();
   } else if (mSprite->x < 4) {
-    mGameState->ComputerScores();
+    mState = WAIT_STATE;
     mAngle = RIGHT_ANGLE;
-    Reset(VELOCITY);
+    mGameState->ComputerScores();
   }
 
-  if (mGameState->GameOver()) {
-    return EFalse;
-  }
+  return !mGameState->GameOver();
+}
 
-  return ETrue;
+TBool GBallProcess::RunAfter() {
+  switch (mState) {
+    case MOVE_STATE:
+      return MoveState();
+    case WAIT_STATE:
+      return WaitState();
+    default:
+      return EFalse;
+  }
 }

@@ -22,7 +22,7 @@ class GMuteProcess : public BProcess {
 
     TBool RunAfter() {
       mTimer--;
-      if (gControls.CheckPressed(BUTTON2) && mTimer < 0) {
+      if (gControls.IsPressed(BUTTON2) && mTimer < 0) {
         Reset();
         mMuted = !mMuted;
         gOptions->muted = mMuted;

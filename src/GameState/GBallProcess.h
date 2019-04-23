@@ -13,23 +13,33 @@ class GBallProcess : public BProcess {
 public:
   GBallProcess(GGameState *aGameState, TFloat aVelocity = VELOCITY);
   virtual ~GBallProcess();
-public:
+
   TBool RunBefore();
   TBool RunAfter();
-public:
-  void SpeedUp();
-  // reposition the ball at start of round
+  BSprite *Sprite() {
+    return mSprite;
+  }
+  void Pause(TBool aPause);
   void Reset(TFloat aVelocity);
   void Reset() {
-    Reset(mVelocity);
+    Reset(VELOCITY);
   }
-  void CheckCollision(BSprite *paddleSprite);
-public:
-  BSprite *mSprite;
+
 private:
-  TInt   mAngle;
-  TFloat mVelocity;
+  TBool WaitState();
+  TBool MoveState();
+  void SpeedUp();
+  void CheckCollision(BSprite *paddleSprite);
+
+private:
+  TInt       mAngle;
+  TFloat     mVelocity;
+  BSprite    *mSprite;
   GGameState *mGameState;
+  enum {
+    WAIT_STATE,
+    MOVE_STATE,
+  } mState;
 };
 
 #endif //BOING_GBALLPROCESS_H
