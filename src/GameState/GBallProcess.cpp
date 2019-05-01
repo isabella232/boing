@@ -107,10 +107,12 @@ TBool GBallProcess::RunBefore() {
                newY = mSprite->y + mSprite->vy;
 
   // Step through possible collision at high velocities
-  if (newX <= 8) {
-    CheckCollision(mGameState->Player());
-  } else if (newX >= SCREEN_WIDTH - 16) {
-    CheckCollision(mGameState->Computer());
+  if (mSprite->flags & SFLAG_CHECK) {
+    if (newX <= 8 && mSprite->vx <= -8) {
+      CheckCollision(mGameState->Player());
+    } else if (newX >= SCREEN_WIDTH - 16 && mSprite->vx >= 8) {
+      CheckCollision(mGameState->Computer());
+    }
   }
 
   // Bounce of walls
