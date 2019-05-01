@@ -20,7 +20,7 @@ class GGetReadyProcess : public BProcess {
       // Don't allow pausing the game in this state
       gControls.cKeys &= ~BUTTON_START;
 
-      if (mTimer-- < 0 || gControls.CheckPressed(BUTTON_ANY)) {
+      if (mTimer-- < 0 || gControls.IsPressed(BUTTON_ANY)) {
         mGameState->ResetBall();
         return EFalse;
       }

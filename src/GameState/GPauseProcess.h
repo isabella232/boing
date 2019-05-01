@@ -22,7 +22,7 @@ class GPauseProcess : public BProcess {
 
     TBool RunAfter() {
       mTimer--;
-      if (gControls.CheckPressed(BUTTON_START) && mTimer < 0) {
+      if (gControls.IsPressed(BUTTON_START) && mTimer < 0) {
         gSoundPlayer.SfxStartGame();
 
         if (!gOptions->muted) {
