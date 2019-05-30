@@ -1,6 +1,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
 PROJECT(boing)
 
+ADD_COMPILE_DEFINITIONS(CE_SDL2_WINDOW_TITLE="Boing :: by Modus Create")
+
 SET(CMAKE_CXX_STANDARD 11)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-implicit-exception-spec-mismatch")
 
@@ -16,34 +18,34 @@ INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/creative-engine/CreativeEngine.cmake)
 
 
 INCLUDE_DIRECTORIES(BRICKOUT_INCLUDE_DIRS
-        ${CMAKE_SOURCE_DIR}/src
-        ${CMAKE_SOURCE_DIR}/src/GameState
-        ${CMAKE_SOURCE_DIR}/src/TitleState
-        ${CMAKE_SOURCE_DIR}/src/MainOptionsState
-        ${CMAKE_SOURCE_DIR}/src/SplashState
-        ${CMAKE_SOURCE_DIR}/src/RulesState
-        ${CMAKE_BINARY_DIR}/usr/local/include
-        )
+  ${CMAKE_SOURCE_DIR}/src
+  ${CMAKE_SOURCE_DIR}/src/GameState
+  ${CMAKE_SOURCE_DIR}/src/TitleState
+  ${CMAKE_SOURCE_DIR}/src/MainOptionsState
+  ${CMAKE_SOURCE_DIR}/src/SplashState
+  ${CMAKE_SOURCE_DIR}/src/RulesState
+  ${CMAKE_BINARY_DIR}/usr/local/include
+)
 
 INCLUDE_DIRECTORIES(
-        ${BRICKOUT_INCLUDE_DIRS}
-        ${CREATIVE_ENGINE_INCLUDE_DIRS}
+  ${BRICKOUT_INCLUDE_DIRS}
+  ${CREATIVE_ENGINE_INCLUDE_DIRS}
 )
 
 # gather Brickout sources
 FILE(GLOB_RECURSE BRICKOUT_SRC RELATIVE ${CMAKE_SOURCE_DIR} "src/*.cpp")
 
 ADD_EXECUTABLE(
-        ${PROJECT_NAME}
-        Resources.bin
-        ${CREATIVE_ENGINE_SOURCE_FILES}
-        ${BRICKOUT_SRC}
+  ${PROJECT_NAME}
+  Resources.bin
+  ${CREATIVE_ENGINE_SOURCE_FILES}
+  ${BRICKOUT_SRC}
 )
 
 # make boing.app
 if (APPLE)
-    SET_TARGET_PROPERTIES(boing PROPERTIES MACOSX_BUNDLE TRUE)
-    INSTALL(TARGETS boing DESTINATION ".")
+  SET_TARGET_PROPERTIES(boing PROPERTIES MACOSX_BUNDLE TRUE)
+  INSTALL(TARGETS boing DESTINATION ".")
 endif (APPLE)
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${CREATIVE_ENGINE_LINK_LIBRARIES})
