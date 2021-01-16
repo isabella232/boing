@@ -1,32 +1,42 @@
-//
-// Created by Jesus Garcia on 10/2/18.
-//
 #ifndef GSOUNDPLAYER_H
 #define GSOUNDPLAYER_H
 
-#include "BSoundPlayer.h"
+#include "BSoundEngine.h"
 
 #include "Resources.h"
 
 
-class GSoundPlayer : public BSoundPlayer {
+class GSoundPlayer : public BBase {
+private:
+    TUint8 mNumberFxChannels;
+    TUint8 mNumberFxSlots;
 
+    TUint8 mMaxSongs;
+    TUint8 mMaxEffects;
+    SongSlot *mSongSlots; // Used to store number of slots
 
 public:
-  void Init(TUint8 aNumberFxChannels, TUint8 aNumberFxSlots);
+  ~GSoundPlayer();
+  void Init(TUint8 aNumberFxChannels);
 
-  TBool LoadSongSlot(TInt16 aResourceId) override;
-  TBool LoadEffects() override;
-  BRaw* LoadEffectResource(TUint16 aResourceId, TInt16 aSlotNumber) override;
+  BRaw *FindRawSongFileById(TInt16 aResourceId);
+  TBool LoadEffects();
   TBool PlayMusic(TInt16 aResourceId);
+  void MuteMusic(TBool aMuted);
 
-
+  void TriggerSfx(TUint16 aSfxNumber, TInt8 aChannel = -1);
+  TBool SetMusicVolume(TFloat aPercent) {
+    return soundEngine.SetMusicVolume(aPercent);
+  }
+  TBool SetEffectsVolume(TFloat aPercent) {
+    return soundEngine.SetEffectsVolume(aPercent);
+  }
   // SFX Methods //
   void SfxBounceOffPlayer();
   void SfxBounceWall();
-  void SfxKillBlock();
   void SfxStartGame();
   void SfxNewBall();
+
 };
 
 

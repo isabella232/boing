@@ -40,23 +40,24 @@ enum {
 };
 
 
-static const TInt16 MAX_BBITMAP = SPLASH_BMP + 1;
+const TInt16 MAX_BBITMAP = SPLASH_BMP + 1;
 
-static const TUint16 IMG_DROP1 = 0;
-static const TUint16 IMG_DROP2 = 4;
-static const TUint16 IMG_DROP3 = 8;
-static const TUint16 IMG_DROP4 = 16;
-static const TUint16 IMG_DROP5 = 24;
-static const TUint16 IMG_DROP6 = 32;
+const TUint16 IMG_DROP1 = 0;
+const TUint16 IMG_DROP2 = 4;
+const TUint16 IMG_DROP3 = 8;
+const TUint16 IMG_DROP4 = 16;
+const TUint16 IMG_DROP5 = 24;
+const TUint16 IMG_DROP6 = 32;
 
-static const TUint16 COLOR_TEXT        = 7;
-static const TUint16 COLOR_TEXT_SHADOW = 12;
+const TUint16 COLOR_TEXT        = 7;
+const TUint16 COLOR_TEXT_SHADOW = 12;
+const TInt16 COLOR_TEXT_TRANSPARENT = -1;
 
-static const TUint16 IMG_PADDLE = 0;
-static const TUint16 IMG_BRICK_RED = 1;
-static const TUint16 IMG_BRICK_GREEN = 2;
-static const TUint16 IMG_BRICK_BLUE = 3;
-static const TUint16 IMG_BRICK_YELLOW = 4;
-static const TUint16 IMG_BALL = 8;
+const TUint16 IMG_PADDLE = 0;
+const TUint16 IMG_BRICK_RED = 1;
+const TUint16 IMG_BRICK_GREEN = 2;
+const TUint16 IMG_BRICK_BLUE = 3;
+const TUint16 IMG_BRICK_YELLOW = 4;
+const TUint16 IMG_BALL = 8;
 
 #endif //BOING_GRESOURCES_H

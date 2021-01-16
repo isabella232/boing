@@ -25,7 +25,7 @@ GGame::GGame() {
 
   // TODO: Jay - this needs to be in BApplication constructor (I think)
 #ifdef ENABLE_AUDIO
-  gSoundPlayer.Init(2 /*channels*/, 5 /*numSamples*/);
+  gSoundPlayer.Init(2 /*channels*/);
 #endif
 
   // preload bitmaps

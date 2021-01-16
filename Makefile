@@ -33,7 +33,7 @@ release: FORCE
 rcomp: FORCE
 	echo "Building rcomp"
 	echo ${EXTRA_COMPONENT_DIRS}
-	cd ${CREATIVE_ENGINE_PATH}/tools && make
+	cd ${CREATIVE_ENGINE_PATH}/tools/rcomp-src && make
 
 resources: rcomp FORCE
 	echo "Compiling resources"
