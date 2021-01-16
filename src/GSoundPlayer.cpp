@@ -1,10 +1,3 @@
-
-
-//
-//
-//
-//
-//
 // Created by Jesus Garcia on 10/2/18.
 //
 
@@ -16,6 +9,8 @@
 //#define DISABLE_AUDIO
 //#undef DISABLE_AUDIO
 
+#define MUSIC_VOLUME (.20)
+#define SFX_VOLUME (.35)
 
 GSoundPlayer gSoundPlayer;
 
@@ -36,7 +31,6 @@ static TUint16 FindSfxNumber(TUint16 aSfxFile) {
     }
   }
   printf("WARNING :: Could not find SFX for ID %i\n", aSfxFile);
-
 
   return UINT16_MAX;
 }

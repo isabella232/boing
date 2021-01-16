@@ -40,6 +40,7 @@ SET(BOING_INCLUDE_DIRS
     ${CMAKE_SOURCE_DIR}/src/MainOptionsState
     ${CMAKE_SOURCE_DIR}/src/SplashState
     ${CMAKE_SOURCE_DIR}/src/RulesState
+    ${CMAKE_SOURCE_DIR}/src/Resources.bin
     ${CMAKE_BINARY_DIR}/usr/local/include
     )
 
@@ -53,7 +54,6 @@ FILE(GLOB_RECURSE BOING_SRC RELATIVE ${CMAKE_SOURCE_DIR} "src/*.cpp")
 
 ADD_EXECUTABLE(
     ${PROJECT_NAME}
-    ${CMAKE_SOURCE_DIR}/src/Resources.bin
     ${CREATIVE_ENGINE_SOURCE_FILES}
     ${BOING_SRC}
 )
