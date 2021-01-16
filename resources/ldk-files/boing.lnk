@@ -1,0 +1,5 @@
+title=Boing
+description=Modus Create
+icon=/home/retrofw/games/boing/boing.png
+exec=/home/retrofw/games/boing/boing.dge
+clock=600
