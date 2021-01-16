@@ -1,5 +1,5 @@
 #  ------------ DINGUX UCLIBC STUFF -----------
-CHAINPREFIX = /opt/rs97tools
+CHAINPREFIX = ~/ldk/mipsel-linux-uclibc
 CROSS_COMPILE = $(CHAINPREFIX)/usr/bin/mipsel-linux
 LD_COMMAND = $(CHAINPREFIX)/mipsel-buildroot-linux-uclibc/bin/ld
 

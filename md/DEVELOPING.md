@@ -1,9 +1,9 @@
 # Developer guide
-This document's purpose is to provide a high-level understanding of how Boing works. Programmers wishing to get involved should review our [contribution](./md/CONTRIBUTING.md) guidelines as well as have a decent understanding of C++ and build tools. Having some knowledge of SOCs, such as the [ESP32-WROVER](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/get-started-wrover-kit.html) would also be very helpful. 
-Boing is a cross-platform a block-breaking game developed by [Modus Create](https://moduscreate.com) and its sole purpose is to demonstrate how to use [creative engine](https://github.com/moduscreateorg/creative-engine). Boing runs on the [ODROID GO](https://www.hardkernel.com/shop/odroid-go/), macOS and Linux.
+This document's purpose is to provide a high-level understanding of how Boing works. Programmers wishing to get involved should review our [contribution](./md/CONTRIBUTING.md) guidelines as well as have a decent understanding of C++ and build tools.
+Boing is a cross-platform game developed by [Modus Create](https://moduscreate.com) and its sole purpose is to demonstrate how to use [creative engine](https://github.com/moduscreateorg/creative-engine). The Boing's target platform is the [LDK Game](https://retromimi.com/products/ldk-game) console, and it can be compiled and run on macOS and Linux (Ubuntu and Arch distributions).
 
 ## How to Play
-Boing is a simple game where you have to outsmart your AI opponent and land the ball behind his paddle. 
+Boing is a simple game where you have to outsmart your AI opponent and land the ball behind his paddle.
 
 ![boing-gameplay.gif](./img/boing-gameplay.gif)
 
@@ -17,10 +17,6 @@ The following is a list of dependencies for each platform.
 
 #### macOS, Linux
 [SDL2](https://www.libsdl.org/download-2) is a cross-platform low-level media layer framework. Creative Engine generates audio data with LibXMP and feeds it into the SDL2 audio run loop and does similar to present visuals in the application window as well as poll for keyboard input to allow for game play.
-
-#### ODROID GO
-[Espressif IoT development Framework (ESP IDF)](https://github.com/espressif/esp-idf) is a low level framework for accessing capabilities of the ESP32-WOVER SOC.
-
 
 ## Getting started
 Let's get setup for desktop and device development. To do so, we'll need to ensure that we have the right libraries and tools installed.
