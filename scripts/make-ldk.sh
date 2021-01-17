@@ -25,10 +25,9 @@ while [[ $# -gt 0 ]] ;do
 
       -d|--deploy-ipk)
       DEPLOY_IPK=1
-      echo "IPJ!!!!"
       shift # past argument
       ;;
-      
+
       *)    # unknown option
       POSITIONAL+=("$1") # save it in an array for later
       shift # past argument
