@@ -32,7 +32,8 @@ class GGetReadyProcess : public BProcess {
         (SCREEN_WIDTH - 9 * 16) / 2,
         SCREEN_HEIGHT / 2 - 8,
         COLOR_TEXT,
-        COLOR_TEXT_SHADOW
+        COLOR_TEXT_SHADOW,
+        COLOR_TEXT_TRANSPARENT
       );
 
       return ETrue;

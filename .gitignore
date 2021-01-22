@@ -38,3 +38,4 @@ Resources.bin
 build
 cmake-build-debug
 sdkconfig
+.ccls-cache

@@ -91,7 +91,7 @@ void GGameState::PostRender() {
   BBitmap *bm = gDisplay.renderBitmap;
 
   if (mPaused) {
-    bm->DrawStringShadow(ENull, "PAUSE", mFont16, (SCREEN_WIDTH - 5 * 16) / 2, SCREEN_CENTER, COLOR_TEXT, COLOR_TEXT_SHADOW);
+    bm->DrawStringShadow(ENull, "PAUSE", mFont16, (SCREEN_WIDTH - 5 * 16) / 2, SCREEN_CENTER, COLOR_TEXT, COLOR_TEXT_SHADOW, COLOR_TEXT_TRANSPARENT);
   } else {
     char scoreStr[20];
     TBCD score;
@@ -99,12 +99,12 @@ void GGameState::PostRender() {
     // Player score
     score.FromUint32(mPlayerScore);
     score.ToString(scoreStr, ENull);
-    bm->DrawStringShadow(ENull, scoreStr, mFont16, PLAYER_SCORE_X, PLAYER_SCORE_Y, COLOR_TEXT, COLOR_TEXT_SHADOW);
+    bm->DrawStringShadow(ENull, scoreStr, mFont16, PLAYER_SCORE_X, PLAYER_SCORE_Y, COLOR_TEXT, COLOR_TEXT_SHADOW, COLOR_TEXT_TRANSPARENT);
 
     // Computer score
     score.FromUint32(mComputerScore);
     score.ToString(scoreStr, ENull);
-    bm->DrawStringShadow(ENull, scoreStr, mFont16, COMPUTER_SCORE_X, COMPUTER_SCORE_Y, COLOR_TEXT, COLOR_TEXT_SHADOW);
+    bm->DrawStringShadow(ENull, scoreStr, mFont16, COMPUTER_SCORE_X, COMPUTER_SCORE_Y, COLOR_TEXT, COLOR_TEXT_SHADOW, COLOR_TEXT_TRANSPARENT);
   }
 
   if (mGameOver) {
@@ -116,7 +116,7 @@ void GGameState::PostRender() {
       gameOverStr = "COMPUTER WINS";
     }
 
-    bm->DrawStringShadow(ENull, gameOverStr, mFont16, (SCREEN_WIDTH - strlen(gameOverStr) * 16) / 2, SCREEN_CENTER, COLOR_TEXT, COLOR_TEXT_SHADOW);
+    bm->DrawStringShadow(ENull, gameOverStr, mFont16, (SCREEN_WIDTH - strlen(gameOverStr) * 16) / 2, SCREEN_CENTER, COLOR_TEXT, COLOR_TEXT_SHADOW, COLOR_TEXT_TRANSPARENT);
     if (gControls.WasPressed(BUTTON_ANY)) {
       gGame->SetState(GAME_STATE_TITLE);
     }

@@ -18,8 +18,6 @@ GTitleProcess::~GTitleProcess() {
 }
 
 TBool GTitleProcess::RunBefore() {
-  RenderText();
-
   return ETrue;
 }
 
@@ -74,6 +72,9 @@ TBool GTitleProcess::RunAfter() {
 #endif
     return EFalse;
   }
+
+  RenderText();
+
   switch (mState) {
     case STATE_FADEIN:
       return FadeInState();
